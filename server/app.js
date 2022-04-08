@@ -1,12 +1,16 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const { graphqlHTTP } = require("express-graphql");
-
-require("dotenv").config();
+const cors = require("cors");
 
 const schema = require("./schema/schema");
 
+require("dotenv").config();
+
 const app = express();
+
+// allow-cross-origin-requests
+app.use(cors());
 
 const PORT = process.env.PORT || 4000;
 const { MONGO_USER, MONGO_PASSWORD, MONGO_DB_NAME } = process.env;
